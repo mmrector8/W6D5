@@ -24,7 +24,8 @@ class CatsController < ApplicationController
     end
 
     def new
-        render :form
+        @cat = Cat.new
+        render :new
     end
 
     def update
