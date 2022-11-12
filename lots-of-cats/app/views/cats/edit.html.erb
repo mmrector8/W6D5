@@ -1,37 +1,37 @@
-<h2>Create a new cat! </h2>
+<h2>Edit a cat in the libray </h2>
 
-<form action="/cats" method = "POST">
+<form action="<%=cat_url(@cat)%>" method = "POST">
     <input type = "hidden" name = "_method" value = "PATCH">
 
  <label>Name:
-    <input type="text" name="cat[name]" value="" placeholder="Name"/><br>
+    <input type="text" name="cat[name]" value="<%= @cat.name%>" placeholder="Name"/><br>
   </label> <br>
 
   <label>Sex:
     <label for="F"> F</label>
-         <input type="radio" id = "F" name="cat[sex]" value="F"/>
+         <input type="radio" id = "F" name="cat[sex]" value="<%= @cat.sex%>" <%= @cat.sex == "F" ? "checked" : "" %> />
     <label for="M"> M</label>
-        <input type = "radio" id= "M" name= "cat[sex]" value = "M"> <br>
+        <input type = "radio" id= "M" name= "cat[sex]" value = "<%= @cat.sex%>" <%= @cat.sex == "M" ? "checked" : "" %>> <br>
   </label> <br>
 
    <label>Color: 
     <select name="cat[color]">
-    <option disabled selected> please choose a color! </option>
+    <option disabled> please choose a color! </option>
     <% Cat::CAT_COLORS.each do |color| %>
-        <option value="<%= color %>"> <%= color%> </option>
+        <option value="<%= color %>"> <%= @cat.color == color ? "selected" : "" %> <%= color%> </option>
     <% end %>
     </select>
   </label> <br><br>
 
-
    <label>Date:
-    <input type="date" name="cat[birth_date]" value="" placeholder="Sex"/><br>
+    <input type="date" name="cat[birth_date]" value="<%= @cat.birth_date%>" /><br>
   </label>
     <br>
     
-  <label>Description(optional):
-    <input type="textarea" name="cat[description]" value="" placeholder="Description"/><br>
+  <label>Description(optional): <br>
+    <textarea name="cat[description]"> <%= @cat.description %>
+    </textarea>
   </label> <br>
 
-    <input type ="submit" value="Add Cat to Library">
+    <input type ="submit" value="Update Cat">
 </form>
