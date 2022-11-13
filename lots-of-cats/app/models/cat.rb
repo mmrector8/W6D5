@@ -33,6 +33,6 @@ class Cat < ApplicationRecord
     has_many :rental_requests,
         primary_key: :id,
         foreign_key: :cat_id,
-        class_name: :Cat,
+        class_name: :CatRentalRequest,
         dependent: :destroy
 end

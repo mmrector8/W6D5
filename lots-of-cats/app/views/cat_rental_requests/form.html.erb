@@ -3,17 +3,21 @@
 <form action= "<%=cat_rental_requests_url%>" method = "POST">
 
 <label> Cat Desired
-    <select name = "cat[name]">
+    <select name = "cat_rental_request[cat_id]">
     <option disabled selected> Please choose a cat! </option>
     <% Cat.all.each do |cat| %>
-        <option value = "<%cat.id%>"> <%= cat.name %> </option>
+        <% selected = @rental_request.cat_id == cat.id %>
+        <option <%= selected ? "selected" : "" %>
+                value="<%= cat.id %>">
+          <%= cat.name %>
+        </option>
     <% end %>
     required
     </select>
 </label> <br> <br>
 
 <label>  Requested Start Date:
-    <input type = "date" name = "cat_rental_request[start_date]" value = "<%=@rental_request.start_date%>" required>
+    <input type="date" name="cat_rental_request[start_date]" value="<%= @rental_request.start_date %>"required>
 </label> <br><br>
 
 <label>  Requested End Date:
@@ -21,4 +25,5 @@
 </label> <br><br>
 
 <input type = "submit" value = "Submit Request">
+
 </form> 

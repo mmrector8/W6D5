@@ -20,7 +20,7 @@
 
 <h1> Rental Requests </h1>
 <% if @cat.rental_requests.empty? %>
-<p> <% @cat.name %> has no rental requests> </p>
+<p> <%= @cat.name %> has no rental requests </p>
 <% else %>
   <table>
     <tr>
@@ -29,7 +29,12 @@
       <th>Status</th>
     </tr>
     <tr>
-    <td> <%= @CatRentalRequest.start_date  %></td>
+    <td>
+       <% @cat.rental_requests.sort.each do |req| %>
+            <%= req.start_date  %>
+          <% end %>
+        
+    </td>
     <td><%= @CatRentalRequest.end_date%></td>
     <td><%= @CatRentalRequest.status %></td>
 

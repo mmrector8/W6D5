@@ -1,18 +1,22 @@
 class CatRentalRequestsController < ApplicationController
 
+    def index
+        @requests = CatRentalRequest.all 
+        render json: @requests
+    end
 
     def new
-        @rental_requests = CatRentalRequest.new
+        @rental_request = CatRentalRequest.new
         render :form
     end
 
     def create
-        @rental_requests = CatRentalRequest.new(cat_rental_requests_params)
+        @rental_request = CatRentalRequest.new(cat_rental_requests_params)
 
-        if @rental_requests.save
-            redirect_to cat_rental_request_url
+        if @rental_request.save
+            render json: "saved!"
         else
-            render :form
+            render json: 'not saved!'
         end
     end
 

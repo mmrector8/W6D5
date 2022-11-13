@@ -11,5 +11,5 @@ Rails.application.routes.draw do
       resources :cat_rental_requests, only: [:new]
   end
 
-   resources :cat_rental_requests, only: [:new, :create]
+   resources :cat_rental_requests, only: [:new, :create, :index]
 end

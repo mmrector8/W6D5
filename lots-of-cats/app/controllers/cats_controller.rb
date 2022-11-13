@@ -19,7 +19,7 @@ class CatsController < ApplicationController
         if @cat.save
             redirect_to cat_url(@cat)
         else
-            render :form
+            render :new
         end
     end
 
