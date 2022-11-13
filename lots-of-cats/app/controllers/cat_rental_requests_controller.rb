@@ -14,9 +14,9 @@ class CatRentalRequestsController < ApplicationController
         @rental_request = CatRentalRequest.new(cat_rental_requests_params)
 
         if @rental_request.save
-            render json: "saved!"
+           redirect_to cat_url(@rental_request.cat)
         else
-            render json: 'not saved!'
+            render :form
         end
     end
 
